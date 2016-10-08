@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменения свойств объектов</title>
+</head>
+<body>
+    <script>
+    var submarine = {
+        name: "Yellow Submurine",
+        width: "30 m",
+        weight: "30 tonn",
+        country: "UK"
+    }
+    
+    for (key in submarine) {
+        console.log(key + " : " + submarine[key]);
+    }
+        // Добавляем свойства в объект
+        
+    Object.defineProperty(submarine, "Officers", { 
+        value: 10, 
+        configurable: true, 
+        writable: true, 
+        enumerable: true
+    });
+        
+    Object.defineProperty(submarine, "Captain1", { 
+        value: "Mag Morehodov", 
+        configurable: true, 
+        writable: true, 
+        enumerable: true
+    });
+        
+    console.log(submarine.Captain1);
+    
+    // добавим меторы ввода и вывода
+    
+    Object.defineProperty(submarine,"subTechInfo", {
+        get: function(){
+            return "Длинна = " + this.width + "," + " Вес = " + this.weight;        
+        },
+        enumerable: true
+    })   
+    
+    console.log("Все зовут его " + submarine.Captain1);
+    
+  
+  // console.log(submarine.subTechInfo);  
+  submarine.Captain1 = "Супер Супервася";
+  console.log("Изменное имя -" + submarine.Captain1);      
+      
+console.log(Object.keys(submarine));  
+    console.log(Object.getOwnPropertyNames(submarine));    
+        
+    </script>
+</body>
+</html>
